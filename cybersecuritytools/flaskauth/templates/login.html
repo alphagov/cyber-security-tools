@@ -1,0 +1,14 @@
+<ul id="navigation" class="govuk-header__navigation govuk-header__navigation--end" aria-label="Login">
+    {% if "user_info" in session %}
+    <li class="govuk-header__navigation-item">
+        Logged in as: {{session.user_info.name}}
+    </li>
+    {% endif %}
+    <li class="govuk-header__navigation-item">
+        {% if "user_info" in session %}
+        <a class="govuk-header__link" href="/logout">Logout</a>
+        {% else %}
+        <a class="govuk-header__link" href="{{ '/auth' if auth_mode == 'alb' else '/login' }}">Login</a>
+        {% endif %}
+    </li>
+</ul>

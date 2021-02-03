@@ -1,0 +1,26 @@
+<main id="content" class="technical-documentation" data-module="anchored-headings">
+  <h1 id="access-restricted" class="anchored-heading">
+    <a href="#access-restricted" class="anchored-heading__icon" aria-hidden="true" tabindex="-1"></a>
+    Access restricted
+  </h1>
+  <div class="govuk-form-group--error" aria-labelledby="error-summary-title" role="alert">
+    <p>Access to the requested content: {{authorised_path}} is restricted</p>
+    <p>{{access_message}}</p>
+    <ul class="govuk-list govuk-error-summary__list">
+      {% if "user_info" in session %}
+      <li>
+        Ask in GDS Slack
+        <a target="slack" href="https://gds.slack.com/archives/CCMPJKFDK">#cyber-security-help</a>
+      </li>
+      <li>
+        or send us an email:
+        <a target="mail" href="mailto:cyber.security@digital.cabinet-office.gov.uk">cyber.security@digital.cabinet-office.gov.uk</a>
+      </li>
+      {% else %}
+      <li>
+        Please <a href="{{ '/auth' if auth_mode == 'alb' else '/login' }}">login</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</main>
